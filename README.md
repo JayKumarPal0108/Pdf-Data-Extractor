@@ -40,6 +40,18 @@ Start the Streamlit application with:
 
 This will launch the web interface where you can upload a PDF and extract data.
 
+# How to Use This Tool
+
+Run the Application: Start the Streamlit app using the command above.
+
+Upload a PDF: Use the provided UI to select and upload a PDF file.
+
+Choose Extraction Options: Select the type of data you want to extract (metadata, text, images, etc.).
+
+View Results: Extracted data will be displayed within the UI.
+
+Download Data: If applicable, download the extracted data in a suitable format.
+
 ## Approach
 
 Metadata Extraction: Uses PyMuPDF (fitz) to retrieve document metadata.
