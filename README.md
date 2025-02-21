@@ -96,3 +96,10 @@ This project is open-source and can be modified for personal or commercial use.
 
 # Gant chart 
 ![image](https://github.com/user-attachments/assets/d38a86e3-eb5d-4900-84c5-9f649973f200)
+
+# ER Diagram
+![image](https://github.com/user-attachments/assets/43b9aa29-81ee-436d-b910-e040290dd0fc)
+
+# Flow Chart
+![image](https://github.com/user-attachments/assets/52fd2eb3-5f5a-4e1b-8597-2787ac14476c)
+
