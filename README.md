@@ -1,10 +1,10 @@
 # README: PDF Data Extractor
 
-Overview
+## Overview
 
 The PDF Data Extractor is a Python-based tool that extracts metadata, text, images, product details, hyperlinks, and tables from PDF documents. It uses fitz (PyMuPDF), pdfplumber, and pandas for processing and streamlit for a user-friendly interface.
 
-Features
+# Features
 
 Extracts Metadata: Retrieves PDF properties such as author, title, and number of pages.
 
@@ -20,7 +20,7 @@ Extracts Tables: Recognizes and extracts tabular data.
 
 Web UI: Provides an interactive user interface using Streamlit.
 
-Installation and Setup
+## Installation and Setup
 
 Prerequisites
 
@@ -30,17 +30,17 @@ Install Dependencies
 
 Run the following command to install required libraries:
 
-pip install pymupdf pandas pdfplumber streamlit pillow
+## pip install pymupdf pandas pdfplumber streamlit pillow
 
 Running the Tool
 
 Start the Streamlit application with:
 
-streamlit run pdf_extractor.py
+## streamlit run pdf_extractor.py
 
 This will launch the web interface where you can upload a PDF and extract data.
 
-Approach
+## Approach
 
 Metadata Extraction: Uses PyMuPDF (fitz) to retrieve document metadata.
 
@@ -56,9 +56,9 @@ Table Extraction: Uses pdfplumber to extract structured tabular data.
 
 UI Implementation: Provides a clean and interactive UI using Streamlit.
 
-Assumptions and Future Improvements
+# Assumptions and Future Improvements
 
-Assumptions
+## Assumptions
 
 Product details are formatted consistently in the PDF.
 
@@ -66,7 +66,7 @@ Images are required for extracting relevant product information.
 
 The tool assumes prices follow standard currency formats (e.g., $99.99).
 
-Potential Improvements
+## Potential Improvements
 
 Improved OCR support: Integrate pytesseract for better text extraction from scanned PDFs.
 
@@ -78,7 +78,7 @@ Performance enhancements: Optimize large PDF processing and image extraction.
 
 Cloud storage support: Integrate cloud storage options like AWS S3 for storing extracted data.
 
-License
+# License
 
 This project is open-source and can be modified for personal or commercial use.
 
