@@ -94,3 +94,5 @@ Cloud storage support: Integrate cloud storage options like AWS S3 for storing e
 
 This project is open-source and can be modified for personal or commercial use.
 
+# Gant chart 
+![image](https://github.com/user-attachments/assets/d38a86e3-eb5d-4900-84c5-9f649973f200)
