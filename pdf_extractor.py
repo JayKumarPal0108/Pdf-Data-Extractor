@@ -44,12 +44,14 @@ def extract_product_details(pdf_path, image_dir="images"):
     doc = fitz.open(pdf_path)  # Open the PDF file
     product_data = []  # Create a list to store product information
     price_pattern = re.compile(r"\$\s?\d{1,3}(?:,\d{3})*(?:\.\d{2})?")  # Create a pattern to find prices
+    dimension_pattern = re.compile(r"(\d+\s*x\s*\d+\s*(?:x\s*\d+)?)")  # Create a pattern to find dimensions
 
     def classify_text(text):
         lines = text.split("\n")  # Split the text into lines
         current_title = None  # Variable to hold the current product title
         current_description = []  # List to hold the current product description
         current_prices = []  # List to hold the current product prices
+        current_dimensions = []  # List to hold the current product dimensions
 
         for i, line in enumerate(lines):  # Go through each line
             line = line.strip()  # Remove extra spaces from the line
@@ -58,18 +60,22 @@ def extract_product_details(pdf_path, image_dir="images"):
             
             if re.match(r"^[A-Z\s\-']+$", line):  # Check if the line is a title (all uppercase)
                 if current_title and current_description:  # If we have a title and description
-                    product_data.append([current_title, " ".join(current_description), ", ".join(current_prices), ""])  # Save the product info
+                    product_data.append([current_title, " ".join(current_description), ", ".join(current_prices), ", ".join(current_dimensions), ""])  # Save the product info
                 current_title = lines[i-1] if i > 0 else line  # Set the current title
                 current_description = []  # Reset the description
                 current_prices = []  # Reset the prices
+                current_dimensions = []  # Reset the dimensions
             else:
                 current_description.append(line)  # Add the line to the description
                 price_matches = price_pattern.findall(line)  # Find any prices in the line
                 if price_matches:  # If we found prices
                     current_prices.extend(price_matches)  # Add them to the list of prices
+                dimension_matches = dimension_pattern.findall(line)  # Find any dimensions in the line
+                if dimension_matches:  # If we found dimensions
+                    current_dimensions.extend(dimension_matches)  # Add them to the list of dimensions
 
         if current_title and current_description:  # If we have a title and description at the end
-            product_data.append([current_title, " ".join(current_description), ", ".join(current_prices), ""])  # Save the last product info
+            product_data.append([current_title, " ".join(current_description), ", ".join(current_prices), ", ".join(current_dimensions), ""])  # Save the last product info
     
     for page_num in range(len(doc)):  # Go through each page in the PDF
         page = doc.load_page(page_num)  # Load the page
@@ -98,9 +104,9 @@ def extract_product_details(pdf_path, image_dir="images"):
         if product_data and largest_image_filename:  # If we have product data and a largest image
             product_data[-1][-1] = largest_image_filename  # Add the image filename to the last product entry
     
-    df = pd.DataFrame(product_data, columns=["Product Name", "Description", "Price", "Image"])  # Create a table from the product data
+    df = pd.DataFrame(product_data, columns=["Product Name", "Description", "Price", "Dimensions", "Image"])  # Create a table from the product data
     return df  # Return the table
-
+    
 # Function to get links (URLs) from the PDF
 def extract_links_from_pdf(doc):
     links = []  # Create a list to store links
