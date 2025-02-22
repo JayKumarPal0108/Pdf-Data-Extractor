@@ -30,7 +30,7 @@ Install Dependencies
 
 Run the following command to install required libraries:
 
-## pip install pymupdf pandas pdfplumber streamlit pillow
+## pip install pymupdf pandas pdfplumber streamlit
 
 Running the Tool
 
